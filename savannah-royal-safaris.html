@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Savannah Royal Safaris</title>
+<meta name="description" content="Bespoke luxury safari experiences across Kenya, Tanzania, Uganda and the East African coast. Expert guided. Unforgettable.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Adamina&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --teal: #2e7d7d;
+  --teal-dark: #1f5f5f;
+  --teal-dim: rgba(46,125,125,0.08);
+  --teal-border: rgba(46,125,125,0.25);
+  --gold: #D4AF37;
+  --white: #ffffff;
+  --offwhite: #f7f9f9;
+  --text: #1a1a1a;
+  --text-mid: #444444;
+  --muted: #888888;
+  --border: #e0e0e0;
+  --green: #25a560;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { background: var(--white); color: var(--text); font-family: 'Montserrat', sans-serif; font-weight: 300; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+
+/* NAV */
+.nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 clamp(20px,4vw,60px); height: 68px;
+  background: transparent; transition: background 0.35s;
+}
+.nav.scrolled { background: rgba(46,125,125,0.97); }
+.nav-logo { font-family: 'Adamina', serif; font-size: 17px; font-weight: 400; color: var(--white); text-decoration: none; letter-spacing: 0.03em; line-height: 1.2; }
+.nav-logo small { display: block; font-family: 'Montserrat', sans-serif; font-size: 7.5px; font-weight: 600; letter-spacing: 0.32em; text-transform: uppercase; color: rgba(212,175,55,0.9); margin-top: 2px; }
+.nav-links { display: flex; align-items: center; gap: 28px; list-style: none; }
+.nav-links a { font-size: 9.5px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.8); text-decoration: none; transition: color 0.2s; }
+.nav-links a:hover { color: var(--white); }
+.nav-book { padding: 9px 20px; background: var(--gold); color: var(--text); font-family: 'Montserrat', sans-serif; font-size: 9px; font-weight: 600; letter-spacing: 0.24em; text-transform: uppercase; text-decoration: none; transition: background 0.2s; }
+.nav-book:hover { background: #b89a25; }
+.nav-hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+.nav-hamburger span { display: block; width: 22px; height: 1.5px; background: var(--white); }
+.mobile-nav { display: none; position: fixed; inset: 0; z-index: 99; background: var(--teal); padding: 96px 36px 36px; flex-direction: column; }
+.mobile-nav.open { display: flex; }
+.mobile-nav a { font-family: 'Adamina', serif; font-size: 28px; font-weight: 400; color: var(--white); text-decoration: none; border-bottom: 1px solid rgba(255,255,255,0.12); padding: 18px 0; }
+
+/* HERO */
+.hero {
+  position: relative;
+  width: 100%; height: 100svh; min-height: 600px;
+  display: flex; align-items: flex-end; overflow: hidden;
+  background: var(--teal-dark);
+}
+.hero-media { position: absolute; inset: 0; z-index: 0; }
+.hero-media img, .hero-media video {
+  width: 100%; height: 100%;
+  object-fit: cover; object-position: center 35%; display: block;
+  animation: slowzoom 20s ease-in-out infinite alternate;
+}
+@keyframes slowzoom { from { transform: scale(1); } to { transform: scale(1.07); } }
+.hero-gradient {
+  position: absolute; inset: 0; z-index: 1;
+  background: linear-gradient(to bottom, rgba(31,95,95,0.1) 0%, rgba(15,40,40,0.0) 30%, rgba(15,40,40,0.6) 68%, rgba(15,40,40,0.93) 100%);
+}
+.hero-content { position: relative; z-index: 2; padding: 0 clamp(24px,6vw,92px) clamp(52px,7vw,84px); max-width: 860px; }
+.hero-label { font-size: 9px; font-weight: 600; letter-spacing: 0.34em; text-transform: uppercase; color: var(--gold); margin-bottom: 20px; display: flex; align-items: center; gap: 12px; }
+.hero-label::before { content: ''; width: 26px; height: 1px; background: var(--gold); display: block; flex-shrink: 0; }
+.hero-headline { font-family: 'Adamina', serif; font-size: clamp(42px,7vw,100px); font-weight: 400; line-height: 0.97; color: var(--white); margin-bottom: 26px; }
+.hero-headline em { font-style: italic; color: var(--gold); }
+.hero-sub { font-size: clamp(12px,1.3vw,14px); font-weight: 300; color: rgba(255,255,255,0.72); line-height: 1.8; max-width: 440px; margin-bottom: 36px; }
+.hero-ctas { display: flex; flex-wrap: wrap; gap: 11px; margin-bottom: 48px; }
+.btn-gold { display: inline-flex; align-items: center; padding: 14px 30px; background: var(--gold); color: var(--text); font-family: 'Montserrat', sans-serif; font-size: 9.5px; font-weight: 600; letter-spacing: 0.26em; text-transform: uppercase; text-decoration: none; border: none; transition: background 0.2s; }
+.btn-gold:hover { background: #b89a25; }
+.btn-outline-white { display: inline-flex; align-items: center; padding: 13px 28px; background: transparent; color: var(--white); font-family: 'Montserrat', sans-serif; font-size: 9.5px; font-weight: 600; letter-spacing: 0.26em; text-transform: uppercase; text-decoration: none; border: 1px solid rgba(255,255,255,0.38); transition: all 0.2s; }
+.btn-outline-white:hover { border-color: rgba(255,255,255,0.75); background: rgba(255,255,255,0.06); }
+.hero-scroll { font-size: 8.5px; font-weight: 500; letter-spacing: 0.28em; text-transform: uppercase; color: rgba(255,255,255,0.38); display: flex; align-items: center; gap: 10px; }
+.hero-scroll-line { width: 1px; height: 38px; background: linear-gradient(to bottom, transparent, var(--gold)); flex-shrink: 0; }
+
+/* STATS */
+.stats-band { background: var(--teal); display: grid; grid-template-columns: repeat(4,1fr); }
+.stat-item { padding: clamp(18px,2.5vw,26px) clamp(16px,2.5vw,32px); border-right: 1px solid rgba(255,255,255,0.12); text-align: center; }
+.stat-item:last-child { border-right: none; }
+.stat-num { font-family: 'Adamina', serif; font-size: clamp(28px,3.2vw,44px); font-weight: 400; color: var(--white); line-height: 1; }
+.stat-label { font-size: 8.5px; font-weight: 600; letter-spacing: 0.24em; text-transform: uppercase; color: rgba(255,255,255,0.6); margin-top: 5px; }
+
+/* INTRO */
+.intro { display: grid; grid-template-columns: 1fr 1fr; border-top: 1px solid var(--border); }
+.intro-text { padding: clamp(52px,7vw,92px) clamp(28px,5vw,76px); display: flex; flex-direction: column; justify-content: center; gap: 26px; background: var(--white); }
+.eyebrow { display: inline-flex; align-items: center; gap: 13px; font-size: 9px; font-weight: 600; letter-spacing: 0.34em; text-transform: uppercase; color: var(--teal); }
+.eyebrow::before, .eyebrow::after { content: ''; display: block; width: 22px; height: 1px; background: var(--teal); }
+.intro-text h2 { font-family: 'Adamina', serif; font-size: clamp(26px,3.5vw,48px); font-weight: 400; line-height: 1.18; color: var(--text); }
+.intro-text h2 em { font-style: italic; color: var(--teal); }
+.intro-text p { font-size: 13px; color: var(--text-mid); line-height: 1.85; max-width: 420px; }
+.intro-text blockquote { border-left: 2px solid var(--gold); padding-left: 18px; font-family: 'Adamina', serif; font-size: clamp(15px,1.6vw,19px); font-style: italic; color: var(--text); line-height: 1.55; }
+.intro-text blockquote cite { display: block; font-family: 'Montserrat', sans-serif; font-size: 8.5px; font-style: normal; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: var(--teal); margin-top: 10px; }
+.btn-teal-outline { display: inline-flex; align-items: center; padding: 12px 24px; background: transparent; color: var(--teal); font-family: 'Montserrat', sans-serif; font-size: 9px; font-weight: 600; letter-spacing: 0.26em; text-transform: uppercase; text-decoration: none; border: 1.5px solid var(--teal-border); transition: all 0.2s; align-self: flex-start; }
+.btn-teal-outline:hover { background: var(--teal-dim); border-color: var(--teal); }
+.intro-image { position: relative; overflow: hidden; min-height: 480px; background: var(--teal-dark); }
+.intro-image img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.7s ease; }
+.intro-image:hover img { transform: scale(1.04); }
+.intro-image-tag { position: absolute; bottom: 20px; left: 20px; background: rgba(255,255,255,0.92); padding: 8px 14px; font-size: 8.5px; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: var(--teal); }
+
+/* DESTINATIONS */
+.destinations { background: var(--offwhite); padding: clamp(56px,7vw,92px) clamp(24px,5vw,76px); border-top: 1px solid var(--border); }
+.section-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: clamp(32px,4vw,52px); flex-wrap: wrap; gap: 18px; }
+.section-header h2 { font-family: 'Adamina', serif; font-size: clamp(26px,3.8vw,52px); font-weight: 400; line-height: 1.12; color: var(--text); margin-top: 14px; }
+.section-header h2 em { font-style: italic; color: var(--teal); }
+.section-header p { font-size: 12px; color: var(--muted); max-width: 240px; text-align: right; line-height: 1.72; }
+.dest-grid { display: grid; grid-template-columns: 1.55fr 1fr 1fr; grid-template-rows: auto auto; gap: 2px; }
+.dest-card { position: relative; overflow: hidden; text-decoration: none; display: block; background: var(--teal-dark); }
+.dest-card:nth-child(1) { grid-row: span 2; min-height: 580px; }
+.dest-card:nth-child(n+2) { min-height: 286px; }
+.dest-card img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.65s ease; }
+.dest-card:hover img { transform: scale(1.05); }
+.dest-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(15,40,40,0.82) 0%, rgba(15,40,40,0.06) 52%); transition: background 0.3s; }
+.dest-card:hover .dest-overlay { background: linear-gradient(to top, rgba(15,40,40,0.9) 0%, rgba(15,40,40,0.2) 52%); }
+.dest-info { position: absolute; bottom: 0; left: 0; right: 0; padding: clamp(16px,2.2vw,24px); }
+.dest-country { font-size: 8px; font-weight: 600; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); margin-bottom: 5px; display: block; }
+.dest-name { font-family: 'Adamina', serif; font-size: clamp(16px,2vw,24px); font-weight: 400; color: var(--white); line-height: 1.22; display: block; margin-bottom: 7px; }
+.dest-price { font-size: 10px; color: rgba(255,255,255,0.58); }
+.dest-price strong { color: var(--white); font-weight: 500; }
+.dest-arrow { position: absolute; top: 18px; right: 18px; width: 34px; height: 34px; border: 1px solid rgba(255,255,255,0.28); display: flex; align-items: center; justify-content: center; color: var(--white); font-size: 13px; opacity: 0; transform: translateY(5px); transition: opacity 0.28s, transform 0.28s; }
+.dest-card:hover .dest-arrow { opacity: 1; transform: translateY(0); }
+
+/* WHY US */
+.why-us { background: var(--teal); padding: clamp(56px,7vw,92px) clamp(24px,5vw,76px); }
+.why-us-inner { display: grid; grid-template-columns: 1fr 2fr; gap: clamp(36px,5vw,72px); align-items: start; }
+.why-us-left h2 { font-family: 'Adamina', serif; font-size: clamp(26px,3.3vw,46px); font-weight: 400; line-height: 1.16; color: var(--white); margin-top: 16px; }
+.why-us-left h2 em { font-style: italic; color: var(--gold); }
+.why-us-left p { font-size: 12px; color: rgba(255,255,255,0.62); line-height: 1.8; margin-top: 14px; }
+.why-eyebrow { display: inline-flex; align-items: center; gap: 13px; font-size: 9px; font-weight: 600; letter-spacing: 0.34em; text-transform: uppercase; color: var(--gold); }
+.why-eyebrow::before, .why-eyebrow::after { content: ''; display: block; width: 22px; height: 1px; background: var(--gold); }
+.pillars { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: rgba(255,255,255,0.1); }
+.pillar { background: var(--teal); padding: clamp(22px,2.8vw,34px); transition: background 0.2s; }
+.pillar:hover { background: var(--teal-dark); }
+.pillar-icon { width: 34px; height: 34px; border: 1px solid rgba(212,175,55,0.35); display: flex; align-items: center; justify-content: center; margin-bottom: 16px; }
+.pillar-icon svg { width: 15px; height: 15px; stroke: var(--gold); fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+.pillar h3 { font-family: 'Adamina', serif; font-size: clamp(15px,1.5vw,18px); font-weight: 400; color: var(--white); margin-bottom: 9px; }
+.pillar p { font-size: 11.5px; color: rgba(255,255,255,0.58); line-height: 1.75; }
+
+/* REVIEWS */
+.reviews { background: var(--white); padding: clamp(56px,7vw,92px) clamp(24px,5vw,76px); border-top: 1px solid var(--border); }
+.reviews-header { text-align: center; margin-bottom: clamp(32px,4vw,52px); }
+.reviews-header h2 { font-family: 'Adamina', serif; font-size: clamp(26px,3.5vw,48px); font-weight: 400; color: var(--text); margin-top: 14px; line-height: 1.14; }
+.reviews-header h2 em { font-style: italic; color: var(--teal); }
+.reviews-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1px; background: var(--border); }
+.review-card { background: var(--offwhite); padding: clamp(22px,2.8vw,34px); display: flex; flex-direction: column; gap: 14px; }
+.stars { display: flex; gap: 3px; }
+.stars span { color: var(--gold); font-size: 13px; }
+.review-text { font-family: 'Adamina', serif; font-size: clamp(14px,1.4vw,17px); font-style: italic; color: var(--text); line-height: 1.65; flex: 1; }
+.review-meta { display: flex; align-items: center; gap: 11px; border-top: 1px solid var(--border); padding-top: 13px; }
+.review-avatar { width: 36px; height: 36px; border-radius: 50%; background: var(--teal-dim); border: 1px solid var(--teal-border); display: flex; align-items: center; justify-content: center; font-family: 'Adamina', serif; font-size: 15px; color: var(--teal); flex-shrink: 0; }
+.review-name { font-size: 11px; font-weight: 600; color: var(--text); }
+.review-from { font-size: 10px; color: var(--muted); margin-top: 2px; }
+.reviews-link { text-align: center; margin-top: 32px; }
+.reviews-link a { font-size: 10px; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: var(--teal); text-decoration: none; border-bottom: 1px solid var(--teal-border); padding-bottom: 3px; }
+
+/* HIGHLIGHT */
+.highlight { position: relative; min-height: 500px; display: flex; align-items: center; overflow: hidden; background: var(--teal-dark); }
+.highlight-bg { position: absolute; inset: 0; }
+.highlight-bg img { width: 100%; height: 100%; object-fit: cover; opacity: 0.42; }
+.highlight-bg::after { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(31,95,95,0.94) 38%, rgba(31,95,95,0.25) 100%); }
+.highlight-content { position: relative; z-index: 1; padding: clamp(52px,7vw,92px) clamp(32px,6vw,92px); max-width: 600px; }
+.highlight-content h2 { font-family: 'Adamina', serif; font-size: clamp(28px,4vw,58px); font-weight: 400; line-height: 1.12; color: var(--white); margin: 14px 0 18px; }
+.highlight-content h2 em { font-style: italic; color: var(--gold); }
+.highlight-content p { font-size: 13px; color: rgba(255,255,255,0.65); line-height: 1.8; margin-bottom: 28px; max-width: 380px; }
+.highlight-badges { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 32px; }
+.badge { padding: 5px 13px; border: 1px solid var(--teal-border); font-size: 9px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.6); }
+
+/* CTA BAND */
+.cta-band { background: var(--gold); display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 28px; padding: clamp(28px,4vw,48px) clamp(28px,6vw,92px); }
+.cta-band h3 { font-family: 'Adamina', serif; font-size: clamp(20px,2.8vw,38px); font-weight: 400; color: var(--text); line-height: 1.2; }
+.cta-band h3 em { font-style: italic; }
+.cta-band p { font-size: 12px; color: rgba(26,26,26,0.62); margin-top: 5px; }
+.cta-band-buttons { display: flex; gap: 10px; flex-wrap: wrap; flex-shrink: 0; }
+.btn-dark { display: inline-flex; align-items: center; padding: 13px 26px; background: var(--text); color: var(--white); font-family: 'Montserrat', sans-serif; font-size: 9px; font-weight: 600; letter-spacing: 0.26em; text-transform: uppercase; text-decoration: none; transition: background 0.2s; }
+.btn-dark:hover { background: #333; }
+.btn-dark-outline { display: inline-flex; align-items: center; padding: 12px 24px; background: transparent; color: var(--text); font-family: 'Montserrat', sans-serif; font-size: 9px; font-weight: 600; letter-spacing: 0.26em; text-transform: uppercase; text-decoration: none; border: 1px solid rgba(26,26,26,0.35); transition: all 0.2s; }
+.btn-dark-outline:hover { background: rgba(26,26,26,0.08); }
+
+/* FOOTER */
+footer { background: var(--teal-dark); padding: clamp(48px,6vw,76px) clamp(24px,5vw,76px) 24px; }
+.footer-top { display: grid; grid-template-columns: 1.3fr 1fr 1fr 1fr; gap: clamp(28px,4vw,52px); margin-bottom: 44px; }
+.footer-brand-name { font-family: 'Adamina', serif; font-size: 19px; font-weight: 400; color: var(--white); margin-bottom: 3px; }
+.footer-brand-tag { font-size: 7.5px; font-weight: 600; letter-spacing: 0.32em; text-transform: uppercase; color: var(--gold); margin-bottom: 14px; }
+.footer-brand p { font-size: 11.5px; color: rgba(255,255,255,0.42); line-height: 1.75; max-width: 220px; }
+.footer-offices { margin-top: 14px; font-size: 9.5px; color: rgba(255,255,255,0.3); letter-spacing: 0.1em; text-transform: uppercase; }
+.footer-col h4 { font-size: 8.5px; font-weight: 600; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); margin-bottom: 16px; }
+.footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 9px; }
+.footer-col ul li a { font-size: 11.5px; color: rgba(255,255,255,0.42); text-decoration: none; transition: color 0.2s; }
+.footer-col ul li a:hover { color: var(--white); }
+.footer-contact p { font-size: 11.5px; color: rgba(255,255,255,0.42); line-height: 1.8; }
+.footer-contact a { color: rgba(255,255,255,0.42); text-decoration: none; transition: color 0.2s; }
+.footer-contact a:hover { color: var(--gold); }
+.footer-bottom { display: flex; justify-content: space-between; align-items: center; padding-top: 22px; border-top: 1px solid rgba(255,255,255,0.1); flex-wrap: wrap; gap: 10px; }
+.footer-bottom p { font-size: 9.5px; color: rgba(255,255,255,0.25); }
+.footer-social { display: flex; gap: 18px; }
+.footer-social a { font-size: 9.5px; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(255,255,255,0.28); text-decoration: none; transition: color 0.2s; }
+.footer-social a:hover { color: var(--gold); }
+
+/* WA FAB */
+.wa-fab { position: fixed; bottom: 26px; right: 26px; z-index: 200; width: 54px; height: 54px; border-radius: 50%; background: var(--green); display: flex; align-items: center; justify-content: center; text-decoration: none; box-shadow: 0 4px 18px rgba(37,165,96,0.38); transition: transform 0.2s, box-shadow 0.2s; }
+.wa-fab:hover { transform: scale(1.1); box-shadow: 0 6px 26px rgba(37,165,96,0.55); }
+.wa-fab svg { width: 27px; height: 27px; fill: white; }
+.wa-pulse { position: absolute; inset: -4px; border-radius: 50%; border: 2px solid rgba(37,165,96,0.38); animation: pulse 2.4s ease-out infinite; }
+@keyframes pulse { 0% { transform: scale(1); opacity: 0.7; } 100% { transform: scale(1.65); opacity: 0; } }
+
+/* RESPONSIVE */
+@media (max-width: 1020px) {
+  .dest-grid { grid-template-columns: 1fr 1fr; }
+  .dest-card:nth-child(1) { grid-column: span 2; min-height: 340px; }
+  .why-us-inner { grid-template-columns: 1fr; }
+  .footer-top { grid-template-columns: 1fr 1fr; gap: 28px; }
+}
+@media (max-width: 768px) {
+  .nav-links, .nav-book { display: none; }
+  .nav-hamburger { display: flex; }
+  .intro { grid-template-columns: 1fr; }
+  .intro-image { min-height: 300px; }
+  .stats-band { grid-template-columns: 1fr 1fr; }
+  .stat-item:nth-child(2) { border-right: none; }
+  .reviews-grid { grid-template-columns: 1fr; }
+  .cta-band { grid-template-columns: 1fr; }
+  .cta-band-buttons { width: 100%; }
+  .btn-dark, .btn-dark-outline { flex: 1; justify-content: center; }
+  .pillars { grid-template-columns: 1fr; }
+  .footer-top { grid-template-columns: 1fr; }
+}
+@media (max-width: 520px) {
+  .dest-grid { grid-template-columns: 1fr; }
+  .dest-card:nth-child(1) { grid-column: span 1; min-height: 280px; }
+  .dest-card:nth-child(n+2) { min-height: 240px; }
+}
+@media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
+</style>
+</head>
+<body>
+
+<nav class="nav" id="mainNav">
+  <a class="nav-logo" href="#">Savannah Royal Safaris<small>Kenya, Uganda, Tanzania</small></a>
+  <ul class="nav-links">
+    <li><a href="https://www.savannahroyalsafaris.com/about-us">About</a></li>
+    <li><a href="https://www.savannahroyalsafaris.com/packages">Packages</a></li>
+    <li><a href="https://www.savannahroyalsafaris.com/destinations-1">Destinations</a></li>
+    <li><a href="https://www.savannahroyalsafaris.com/reviews">Reviews</a></li>
+    <li><a href="https://www.savannahroyalsafaris.com/get-in-touch">Contact</a></li>
+  </ul>
+  <a class="nav-book" href="https://www.savannahroyalsafaris.com/book-now">Book Now</a>
+  <div class="nav-hamburger" id="hamburger" onclick="toggleMobile()"><span></span><span></span><span></span></div>
+</nav>
+
+<div class="mobile-nav" id="mobileNav">
+  <a href="https://www.savannahroyalsafaris.com/about-us" onclick="toggleMobile()">About</a>
+  <a href="https://www.savannahroyalsafaris.com/packages" onclick="toggleMobile()">Packages</a>
+  <a href="https://www.savannahroyalsafaris.com/destinations-1" onclick="toggleMobile()">Destinations</a>
+  <a href="https://www.savannahroyalsafaris.com/reviews" onclick="toggleMobile()">Reviews</a>
+  <a href="https://www.savannahroyalsafaris.com/get-in-touch" onclick="toggleMobile()">Contact</a>
+  <a href="https://www.savannahroyalsafaris.com/book-now" onclick="toggleMobile()">Book Now</a>
+</div>
+
+<section class="hero">
+  <div class="hero-media">
+    <!-- SWAP THIS COMMENT with your image or video when ready:
+         <img src="YOUR-URL-HERE" alt="Safari hero">
+         OR
+         <video autoplay muted loop playsinline><source src="YOUR-VIDEO.mp4" type="video/mp4"></video>
+    -->
+  </div>
+  <div class="hero-gradient"></div>
+  <div class="hero-content">
+    <div class="hero-label">Kenya, Uganda, Tanzania, East Africa Coast</div>
+    <h1 class="hero-headline">Where the<br>wild <em>calls</em><br>your name</h1>
+    <p class="hero-sub">Bespoke safari journeys crafted for those who seek more than a holiday. You imagine it, we make it happen.</p>
+    <div class="hero-ctas">
+      <a class="btn-gold" href="https://www.savannahroyalsafaris.com/book-now">Start Planning</a>
+      <a class="btn-outline-white" href="https://www.savannahroyalsafaris.com/packages">View Packages</a>
+    </div>
+    <div class="hero-scroll"><div class="hero-scroll-line"></div>Scroll to explore</div>
+  </div>
+</section>
+
+<div class="stats-band">
+  <div class="stat-item"><div class="stat-num">200+</div><div class="stat-label">Safaris Completed</div></div>
+  <div class="stat-item"><div class="stat-num">20+</div><div class="stat-label">Destinations</div></div>
+  <div class="stat-item"><div class="stat-num">5 Star</div><div class="stat-label">Average Rating</div></div>
+  <div class="stat-item"><div class="stat-num">24 hr</div><div class="stat-label">Response Time</div></div>
+</div>
+
+<section class="intro">
+  <div class="intro-text">
+    <div class="eyebrow">Our Story</div>
+    <h2>Africa, crafted for those who seek the <em>extraordinary</em></h2>
+    <p>At Savannah Royal Safaris we do not sell packages, we build journeys. Every itinerary is shaped around your vision, your pace and the Africa you have always imagined. From the thundering Serengeti migration to the misty gorilla forests of Bwindi, these lands are our home and we share that knowledge with every traveller we guide.</p>
+    <blockquote>We travel not to escape life, but for life not to escape us.<cite>Lawi Mamai, Founder</cite></blockquote>
+    <a class="btn-teal-outline" href="https://www.savannahroyalsafaris.com/about-us">Meet the Team</a>
+  </div>
+  <div class="intro-image">
+    <img src="https://images.unsplash.com/photo-1516426122078-c23e76319801?w=900&q=80&auto=format&fit=crop" alt="Guide watching lions at dawn in the Maasai Mara" loading="lazy">
+    <div class="intro-image-tag">Maasai Mara, Kenya</div>
+  </div>
+</section>
+
+<section class="destinations">
+  <div class="section-header">
+    <div>
+      <div class="eyebrow">Where We Go</div>
+      <h2>Five <em>iconic</em> destinations</h2>
+    </div>
+    <p>Hand picked for wildlife, authenticity and the experiences only East Africa can offer.</p>
+  </div>
+  <div class="dest-grid">
+    <a class="dest-card" href="https://www.savannahroyalsafaris.com/destinations-1">
+      <img src="https://secretafrica.com/wp-content/uploads/2021/11/Best-Time-To-Go-To-The-Masai-Mara-12-1500x1200.jpg" alt="Maasai Mara Kenya" loading="lazy">
+      <div class="dest-overlay"></div>
+      <div class="dest-info"><span class="dest-country">Kenya</span><span class="dest-name">Maasai Mara Adventure</span><span class="dest-price">From <strong>$2,850</strong> per person</span></div>
+      <div class="dest-arrow">&#8599;</div>
+    </a>
+    <a class="dest-card" href="https://www.savannahroyalsafaris.com/destinations-1">
+      <img src="https://africanoverlandtours.com/wp-content/uploads/2025/11/african-overland-tours-why-go-to-uganda-gorilla-trekking-e1762509687142.jpg" alt="Gorilla Trekking Uganda" loading="lazy">
+      <div class="dest-overlay"></div>
+      <div class="dest-info"><span class="dest-country">Uganda</span><span class="dest-name">Gorilla Trekking</span><span class="dest-price">From <strong>$3,450</strong> per person</span></div>
+      <div class="dest-arrow">&#8599;</div>
+    </a>
+    <a class="dest-card" href="https://www.savannahroyalsafaris.com/destinations-1">
+      <img src="https://africaadventurevacations.com/wp-content/uploads/2022/02/An-overview-of-the-great-wildebeest-migration-in-Serengeti-National-Park-1536x1024.jpg" alt="Serengeti Tanzania" loading="lazy">
+      <div class="dest-overlay"></div>
+      <div class="dest-info"><span class="dest-country">Tanzania</span><span class="dest-name">Serengeti and Ngorongoro</span><span class="dest-price">From <strong>$4,200</strong> per person</span></div>
+      <div class="dest-arrow">&#8599;</div>
+    </a>
+    <a class="dest-card" href="https://www.savannahroyalsafaris.com/destinations-1">
+      <img src="https://images.trvl-media.com/place/6101810/cef1a239-8f88-465c-b2ec-5cdfb08c2716.jpg" alt="Kenya Coast" loading="lazy">
+      <div class="dest-overlay"></div>
+      <div class="dest-info"><span class="dest-country">Coastal Kenya</span><span class="dest-name">Kenya Coast Escape</span><span class="dest-price">From <strong>$2,650</strong> per person</span></div>
+      <div class="dest-arrow">&#8599;</div>
+    </a>
+    <a class="dest-card" href="https://www.savannahroyalsafaris.com/destinations-1">
+      <img src="https://www.arcadiasafaris.com/wp-content/uploads/2023/12/murchison-falls-NP-scaled.jpg" alt="Murchison Falls Uganda" loading="lazy">
+      <div class="dest-overlay"></div>
+      <div class="dest-info"><span class="dest-country">Uganda</span><span class="dest-name">Murchison Falls</span><span class="dest-price">From <strong>$2,950</strong> per person</span></div>
+      <div class="dest-arrow">&#8599;</div>
+    </a>
+  </div>
+</section>
+
+<section class="why-us">
+  <div class="why-us-inner">
+    <div class="why-us-left">
+      <div class="why-eyebrow">Why Us</div>
+      <h2>The <em>Savannah Royal</em> difference</h2>
+      <p>Rooted in Kenya and Uganda. Present across East Africa. Dedicated to crafting journeys that stay with you long after you return home.</p>
+    </div>
+    <div class="pillars">
+      <div class="pillar">
+        <div class="pillar-icon"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div>
+        <h3>Bespoke Itineraries</h3>
+        <p>Every trip is built from scratch around your interests, pace and budget. No group tours, no compromises.</p>
+      </div>
+      <div class="pillar">
+        <div class="pillar-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+        <h3>Fast, Personal Response</h3>
+        <p>We reply within 24 hours, 7 days a week on WhatsApp. A real person, not an automated reply.</p>
+      </div>
+      <div class="pillar">
+        <div class="pillar-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+        <h3>Expert Local Guides</h3>
+        <p>Our guides are born in these landscapes. Their knowledge turns a game drive into a story you will carry for decades.</p>
+      </div>
+      <div class="pillar">
+        <div class="pillar-icon"><svg viewBox="0 0 24 24"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg></div>
+        <h3>Transparent Pricing</h3>
+        <p>A 30% deposit secures your dates. Remaining balance due 30 days before travel. Fully refundable up to 60 days prior.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="reviews">
+  <div class="reviews-header">
+    <div class="eyebrow" style="justify-content:center;">What Travellers Say</div>
+    <h2>Memories made, <em>reviews earned</em></h2>
+  </div>
+  <div class="reviews-grid">
+    <div class="review-card">
+      <div class="stars"><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span></div>
+      <p class="review-text">From the first message to the final sunset drive in the Mara, every single detail was perfect. This is exactly how travel should feel.</p>
+      <div class="review-meta"><div class="review-avatar">A</div><div><div class="review-name">Ahmed Al Rashidi</div><div class="review-from">Dubai, UAE. Maasai Mara Safari</div></div></div>
+    </div>
+    <div class="review-card">
+      <div class="stars"><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span></div>
+      <p class="review-text">The gorilla trek in Bwindi was the most profound experience of my life. Our guide knew every sound, every plant. Savannah Royal made it feel effortless.</p>
+      <div class="review-meta"><div class="review-avatar">S</div><div><div class="review-name">Sarah Mitchell</div><div class="review-from">London, UK. Gorilla Trekking Uganda</div></div></div>
+    </div>
+    <div class="review-card">
+      <div class="stars"><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span></div>
+      <p class="review-text">We witnessed the Great Migration crossing, something we had dreamed about for years. The lodge was extraordinary. We are already planning our return.</p>
+      <div class="review-meta"><div class="review-avatar">F</div><div><div class="review-name">Fatima and Khalid Nasser</div><div class="review-from">Abu Dhabi. Serengeti and Ngorongoro</div></div></div>
+    </div>
+  </div>
+  <div class="reviews-link"><a href="https://www.savannahroyalsafaris.com/reviews">Read All Reviews</a></div>
+</section>
+
+<section class="highlight">
+  <div class="highlight-bg">
+    <img src="https://images.unsplash.com/photo-1534476478164-b15bfd70f056?w=1600&q=80&auto=format&fit=crop" alt="Lion at golden hour" loading="lazy">
+  </div>
+  <div class="highlight-content">
+    <div class="why-eyebrow">The Experience</div>
+    <h2>Every sunrise tells a <em>different</em> story</h2>
+    <p>Luxury lodges and tented camps positioned for maximum wildlife access. Expert naturalist guides. Private game drives. Champagne sundowners. Africa without compromise.</p>
+    <div class="highlight-badges">
+      <span class="badge">Classic Lodges</span><span class="badge">Luxury Tented Camps</span><span class="badge">Ultra Luxury Retreats</span><span class="badge">Private Game Drives</span><span class="badge">Family Safaris</span>
+    </div>
+    <a class="btn-gold" href="https://www.savannahroyalsafaris.com/packages">Explore Packages</a>
+  </div>
+</section>
+
+<div class="cta-band">
+  <div>
+    <h3>Ready to start your <em>adventure?</em></h3>
+    <p>Pay a 30% deposit to secure your dates. We respond within 24 hours.</p>
+  </div>
+  <div class="cta-band-buttons">
+    <a class="btn-dark" href="https://www.savannahroyalsafaris.com/book-now">Book Now</a>
+    <a class="btn-dark-outline" href="https://wa.me/971568029082?text=Hello%20Savannah%20Royal%20Safaris%2C%20I%20would%20like%20to%20enquire%20about%20a%20safari." target="_blank" rel="noopener">WhatsApp Us</a>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <div class="footer-brand-name">Savannah Royal Safaris</div>
+      <div class="footer-brand-tag">Rooted in East Africa</div>
+      <p>Bespoke luxury safari experiences across Kenya, Uganda, Tanzania and the East African coast. Built on local knowledge and a genuine love for the wild.</p>
+      <div class="footer-offices">Nairobi · Kampala · Zanzibar · Mombasa</div>
+    </div>
+    <div class="footer-col">
+      <h4>Explore</h4>
+      <ul>
+        <li><a href="https://www.savannahroyalsafaris.com/packages">Safari Packages</a></li>
+        <li><a href="https://www.savannahroyalsafaris.com/destinations-1">Destinations</a></li>
+        <li><a href="https://www.savannahroyalsafaris.com/about-us">About Us</a></li>
+        <li><a href="https://www.savannahroyalsafaris.com/reviews">Reviews</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Destinations</h4>
+      <ul>
+        <li><a href="https://www.savannahroyalsafaris.com/destinations-1">Maasai Mara, Kenya</a></li>
+        <li><a href="https://www.savannahroyalsafaris.com/destinations-1">Serengeti, Tanzania</a></li>
+        <li><a href="https://www.savannahroyalsafaris.com/destinations-1">Bwindi, Uganda</a></li>
+        <li><a href="https://www.savannahroyalsafaris.com/destinations-1">Kenya Coast</a></li>
+        <li><a href="https://www.savannahroyalsafaris.com/destinations-1">Murchison Falls</a></li>
+      </ul>
+    </div>
+    <div class="footer-col footer-contact">
+      <h4>Contact</h4>
+      <p>
+        <a href="tel:+971568029082">+971 56 802 9082</a><br><br>
+        <a href="mailto:bookings@savannahroyalsafaris.com">bookings@savannahroyalsafaris.com</a><br><br>
+        <a href="https://wa.me/971568029082" target="_blank" rel="noopener">WhatsApp</a>
+      </p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>2026 Savannah Royal Safaris. All Rights Reserved.</p>
+    <div class="footer-social">
+      <a href="https://www.instagram.com/sr_safaris" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://www.facebook.com/people/Savannah-Royal-Safaris/61590305259420/" target="_blank" rel="noopener">Facebook</a>
+    </div>
+  </div>
+</footer>
+
+<a class="wa-fab" href="https://wa.me/971568029082?text=Hello%20Savannah%20Royal%20Safaris%2C%20I%20am%20interested%20in%20a%20safari." target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+  <div class="wa-pulse"></div>
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<script>
+  var nav = document.getElementById('mainNav');
+  window.addEventListener('scroll', function(){ nav.classList.toggle('scrolled', window.scrollY > 55); });
+  function toggleMobile(){ document.getElementById('mobileNav').classList.toggle('open'); }
+  if('IntersectionObserver' in window){
+    var obs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){ if(e.isIntersecting){ e.target.style.opacity='1'; e.target.style.transform='translateY(0)'; }});
+    },{threshold:0.1});
+    document.querySelectorAll('.pillar,.review-card,.dest-card,.stat-item').forEach(function(el){
+      el.style.opacity='0'; el.style.transform='translateY(20px)';
+      el.style.transition='opacity 0.55s ease, transform 0.55s ease';
+      obs.observe(el);
+    });
+  }
+</script>
+</body>
+</html>
